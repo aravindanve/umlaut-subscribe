@@ -16,6 +16,7 @@
     var SUBSCRIBE_CLOSE_BUTTON_SELECTOR = '.button__close';
     var SUBSCRIBE_FORM_SELECTOR = 'form#email-form-2';
     var SUBSCRIBE_COOKIE = 'subscribed';
+    var SUBSCRIBE_ON_DISMISS_HIDE_FOREVER = true;
 
     function showSubscribeOverlay() {
         $(SUBSCRIBE_OVERLAY_SELECTOR)
@@ -32,6 +33,9 @@
     }
 
     function hideSubscribeOverlay() {
+        if (SUBSCRIBE_ON_DISMISS_HIDE_FOREVER) {
+            setSubscribedCookie();
+        }
         $(SUBSCRIBE_OVERLAY_SELECTOR)
             .stop(true, true)
             .css('opacity', '1')
